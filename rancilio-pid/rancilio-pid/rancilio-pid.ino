@@ -25,6 +25,7 @@
 #include <PubSubClient.h>
 #include "TSIC.h"       //Library for TSIC temp sensor
 #include <Adafruit_VL53L0X.h> //for TOF 
+#include "OneButton.h"
 
 #if (BREWMODE == 2 || ONLYPIDSCALE == 1)
 #include <HX711_ADC.h>
@@ -58,6 +59,8 @@ DebugStreamManager debugStream;
 PeriodicTrigger writeDebugTrigger(5000); // trigger alle 5000 ms
 PeriodicTrigger logbrew(500);
 
+OneButton brewSwitch = (PINBREWSWITCH, false, false);
+OneButton steamSwitch = (STEAMONPIN, false, false);
 
 /********************************************************
   definitions below must be changed in the userConfig.h file
